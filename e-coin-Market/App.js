@@ -1,7 +1,8 @@
-import { View, Text, FlatList, StyleSheet, TextInput, StatusBar, } from "react-native";
+import { View, Text, FlatList, StyleSheet, TextInput, StatusBar, Image } from "react-native";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import CoinItem from "./src/components/CoinItem";
+import logo from "./assets/iconMain.png";
 
 export default function App() {
   let [coins, setCoins] = useState([]);
@@ -23,7 +24,8 @@ export default function App() {
     <View style={styles.container}>
       <StatusBar backgroundColor={"#141414"} />
       <View style={styles.header}>
-        <Text style={styles.title}>e-coin Market</Text>
+        <Image source={logo} style={styles.image} />
+          <Text style={styles.title}>e-coin Market</Text>
         <TextInput
           placeholder="Search coin..."
           placeholderTextColor={"#858585"}
@@ -58,11 +60,12 @@ let styles = StyleSheet.create({
     backgroundColor: "#141414",
     alignItems: "center",
     flex: 1,
+    paddingVertical: 10
   },
   title: {
     color: "#fff",
-    marginTop: 10,
     fontSize: 20,
+    marginRight: 30
   },
   list: {
     width: "90%",
@@ -72,6 +75,7 @@ let styles = StyleSheet.create({
     justifyContent: "space-between",
     width: "90%",
     marginBottom: 10,
+    alignItems: "center"
   },
   searchInput: {
     color: "#fff",
@@ -80,4 +84,8 @@ let styles = StyleSheet.create({
     width: "40%",
     textAlign: "center",
   },
+  image: {
+    width: 30,
+    height: 30
+  }
 });

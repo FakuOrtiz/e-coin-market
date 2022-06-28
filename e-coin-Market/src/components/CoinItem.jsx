@@ -43,6 +43,7 @@ let styles = StyleSheet.create({
   },
   containerImgCoin: {
     flexDirection: "row",
+    alignItems: "center"
   },
   text: {
     color: "#fff",
