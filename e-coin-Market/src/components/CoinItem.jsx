@@ -5,6 +5,7 @@ export default function CoinItem({ coin }) {
   return (
     <View style={styles.containerItem}>
       <View style={styles.containerImgCoin}>
+        <Text style={styles.rank}>{coin.market_cap_rank}</Text>
         <Image source={{uri: coin.image}} style={styles.image} />
         <View style={styles.containerNames}>
           <Text style={styles.text}>{coin.name}</Text>
@@ -12,7 +13,7 @@ export default function CoinItem({ coin }) {
         </View>
       </View>
       <View>
-        <Text style={styles.textPrice}>${coin.current_price}</Text>
+        <Text style={styles.textPrice}>{coin.current_price} US$</Text>
         <Text
           style={[
             coin.price_change_percentage_24h > 0
@@ -20,7 +21,13 @@ export default function CoinItem({ coin }) {
               : styles.priceNegative,
           ]}
         >
-          {coin.price_change_percentage_24h}
+          {
+            coin.price_change_percentage_24h > 0 ?
+            "+" + coin.price_change_percentage_24h
+            :
+            coin.price_change_percentage_24h
+          }
+          %
         </Text>
       </View>
     </View>
@@ -62,5 +69,9 @@ let styles = StyleSheet.create({
   textPrice: {
     color: "#fff",
     textAlign: "right"
+  },
+  rank: {
+    color: "#434343",
+    marginRight: 10
   }
 });
